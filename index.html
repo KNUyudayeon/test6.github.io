@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Da Yeon Yu | Personal Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@900&family=Inter:wght@600&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            // var $navborButton = $('navbar-button');
+
+
+            var $item1 = $('.item1');
+            var $item2 = $('.item2');
+            var $item3 = $('.item3');
+            var $schedulContainer1 = $('.schedule-container1');
+            var $schedulContainer2 = $('.schedule-container2');
+            var $schedulContainer3 = $('.schedule-container3');
+
+
+            $item1.click(function () {
+                $schedulContainer1.addClass('active');
+                $schedulContainer2.removeClass('active');
+                $schedulContainer3.removeClass('active');
+            });
+
+            $item2.click(function () {
+                $schedulContainer2.addClass('active');
+                $schedulContainer1.removeClass('active');
+                $schedulContainer3.removeClass('active');
+            });
+
+            $item3.click(function () {
+                $schedulContainer3.addClass('active');
+                $schedulContainer1.removeClass('active');
+                $schedulContainer2.removeClass('active');
+            });
+
+
+
+            $('.navbar-button').click(function () {
+                $(this).toggleClass('active');
+                $('.navbar-menu').toggleClass('active');
+            });
+
+            $('.home-btn').click(function () {
+                $('.menu_home').addClass('active');
+                $('.menu_about-me').removeClass('active');
+                $('.menu_favorite').removeClass('active');
+                $('.menu_schedule').removeClass('active');
+            });
+
+            $('.aboutme-btn').click(function () {
+                $('.menu_about-me').addClass('active');
+                $('.menu_home').removeClass('active');
+                $('.menu_favorite').removeClass('active');
+                $('.menu_schedule').removeClass('active');
+            });
+
+            $('.favorite-btn').click(function () {
+                $('.menu_favorite').addClass('active');
+                $('.menu_about-me').removeClass('active');
+                $('.menu_home').removeClass('active');
+                $('.menu_schedule').removeClass('active');
+            });
+
+            $('.schedule-btn').click(function () {
+                $('.menu_schedule').addClass('active');
+                $('.menu_about-me').removeClass('active');
+                $('.menu_home').removeClass('active');
+                $('.menu_favorite').removeClass('active');
+            });
+
+
+
+
+            /* 새로고침 */
+            var link = document.location.href.split("#").pop();
+
+            if (link == "") {
+                link = "menu_home";
+            }
+            else {
+                link = "menu_" + link;
+            }
+            if (link == "menu_home") {
+                $('.menu_home').addClass('active');
+            }
+
+            if (link == "menu_about-me") {
+                $('.menu_home').removeClass('active');
+                $('.menu_about-me').addClass('active');
+            }
+
+            if (link == "menu_favorite") {
+                $('.menu_home').removeClass('active');
+                $('.menu_favorite').addClass('active');
+            }
+
+            if (link == "menu_schedule") {
+                $('.menu_home').removeClass('active');
+                $('.menu_schedule').addClass('active');
+            }
+
+        });
+    </script>
+    <style>
+        body {
+            margin: 0;
+            background-color: rgb(240, 250, 215);
+        }
+
+        .frame {
+            margin: 20px 150px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+        }
+
+
+        .navbar-logo {
+            font-weight: 800;
+            font-size: 25px;
+            color: black;
+            margin: 0;
+        }
+
+        .navbar-menu {
+            display: none;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .navbar-menu>li {
+            font-weight: 550;
+            font-size: 15px;
+            padding: 8px 12px;
+        }
+
+        .navbar-menu>li>a:hover {
+            color: white;
+            font-weight: 550;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        /* button */
+        .navbar-button {
+            display: none;
+            padding-top: 5px;
+            padding-right: 0;
+            position: absolute;
+            right: 32px;
+        }
+
+        .bar {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* dashboard */
+        .main-comment {
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+            margin-left: 10px;
+        }
+
+        .comment1 {
+            font-weight: 510;
+            font-size: 40px;
+        }
+
+        .name {
+            color: black;
+            font-weight: 600;
+        }
+
+        .name:hover {
+            color: rgb(83, 104, 85);
+            transition: none;
+            font-weight: 600;
+        }
+
+
+        .highlight-type {
+            color: rgb(83, 104, 85);
+            font-weight: 600;
+        }
+
+
+        .highlight-type:hover {
+            color: black;
+            transition: none;
+        }
+
+        .comment2 {
+            font-size: 15px;
+            font-weight: 300;
+            margin-right: 10px;
+        }
+
+        /* footer */
+        .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-title {
+            font-size: 25px;
+            font-weight: 700;
+            color: black;
+            margin-top: 60px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgb(0, 0, 0);
+        }
+
+        .contact-links>a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .contact-links>a:hover {
+            color: white;
+
+        }
+
+        /* 메뉴 선택 시 페이지 이동하는 부분 */
+
+        .menu_home {
+            display: none;
+        }
+
+        .menu_home.active {
+            display: block;
+        }
+
+        .menu_about-me {
+            display: none;
+        }
+
+        .menu_about-me.active {
+            display: block;
+        }
+
+        .menu_favorite {
+            display: none;
+        }
+
+        .menu_favorite.active {
+            display: block;
+        }
+
+        .menu_goal {
+            display: none;
+        }
+
+        .menu_goal.active {
+            display: block;
+        }
+
+        .menu_schedule {
+            display: none;
+        }
+
+        .menu_schedule.active {
+            display: block;
+        }
+
+        /* ABOUT ME */
+
+        .menu_about-me {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 80px;
+        }
+
+        #profile-picture {
+            width: 300px;
+            margin-right: 60px;
+        }
+
+        .introduction>h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            border-bottom: 2px solid black;
+            margin-top: 0px;
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
+
+        .introduction>p {
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 40px;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .hobby {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 35px;
+        }
+
+        p>a {
+            line-height: 30px;
+        }
+
+        .value-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 40px;
+            margin-top: 80px;
+        }
+
+        .value-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-content: center;
+            margin-top: 20px;
+        }
+
+        .value {
+            font-family: 'Noto Sans KR', sans-serif;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+
+        .point {
+            color: rgb(76, 107, 76);
+            font-weight: 800;
+        }
+
+        .personality {
+            margin-left: 40px;
+        }
+
+        .personality-picture {
+            width: 200px;
+        }
+
+        .mbti>h1>a {
+            color: rgb(83, 104, 85);
+        }
+
+        .c {
+            display: flex;
+            overflow: hidden;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .item1 {
+            float: left;
+            margin: 0 3px;
+        }
+
+        .graph1 {
+            float: left;
+            margin: 0 3px;
+            margin-left: 30px;
+            padding: 10px;
+            background-color: darkgreen;
+            width: 500px;
+            height: 3px;
+        }
+
+        .item2 {
+            float: left;
+            margin: 0 3px;
+        }
+
+        .graph2 {
+            float: left;
+            margin: 0 3px;
+            margin-left: 30px;
+            padding: 10px;
+            background-color: darkgreen;
+            width: 500px;
+            height: 3px;
+        }
+
+        .item3 {
+            float: left;
+            margin: 0 3px;
+        }
+
+        .graph3 {
+            float: left;
+            margin: 0 3px;
+            margin-left: 30px;
+            padding: 10px;
+            background-color: darkgreen;
+            width: 340px;
+            height: 3px;
+        }
+
+        .item4 {
+            float: left;
+            margin: 0 3px;
+        }
+
+        .graph4 {
+            float: left;
+            margin: 0 3px;
+            margin-left: 30px;
+            padding: 10px;
+            background-color: darkgreen;
+            width: 480px;
+            height: 3px;
+        }
+
+        .isfp-title {
+            margin-top: 50px;
+        }
+
+        .isfp-tag {
+            font-weight: 700;
+        }
+
+        /* FAVORITE */
+
+        .menu_favorite {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .menu_favorite>h2 {
+            margin: 50px 20px;
+            font-size: 50px;
+        }
+
+        .favorite1 {
+            margin: 30px 20px;
+            font-size: 40px;
+        }
+
+        .favorite-movie {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .movie {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 100px;
+            align-items: center;
+
+        }
+
+        .movie-img {
+            width: 600px;
+            margin-left: 20px;
+        }
+
+        .movie-info {
+            margin: 0px 20px;
+        }
+
+        .movie-name {
+            font-size: 50px;
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .movie-comment {
+            font-size: 16px;
+            font-weight: 100;
+        }
+
+        .more {
+            width: content;
+            height: content;
+            padding: 2px;
+            background-color: transparent;
+            border: none;
+            font-weight: 200px;
+            font-size: 20px;
+            float: right;
+
+        }
+
+        .more:hover {
+            color: white;
+            transition: 0.3s;
+        }
+
+        .movie1 {
+            position: relative;
+            right: 90px;
+            color: rgb(58, 75, 58);
+            text-shadow: 3px 3px 3px rgb(104, 120, 91);
+        }
+
+        .movie1:hover {
+            color: black;
+            transition: 0.3s;
+        }
+
+        .movie2 {
+            position: relative;
+            left: 180px;
+            color: rgb(58, 75, 58);
+            text-shadow: 3px 3px 3px rgb(104, 120, 91);
+        }
+
+        .movie2:hover {
+            color: black;
+            transition: 0.3s;
+        }
+
+        .favorite2 {
+            text-align: center;
+            margin: 30px 20px;
+            font-size: 50px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .person-img {
+            width: 300px;
+        }
+
+        .favorite-person {
+            margin-top: 70px;
+            margin-bottom: 120px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .person1 {
+            margin-left: 100px;
+            margin-right: 100px;
+            text-align: center;
+        }
+
+        .person2 {
+            margin-left: 100px;
+            margin-right: 100px;
+            text-align: center;
+        }
+
+        .person-name {
+            font-size: 30px;
+            background-color: rgb(104, 120, 91);
+        }
+
+        .person-name:hover {
+            color: white;
+        }
+
+        .music-img {
+            width: 300px;
+        }
+
+        .music-player {
+            width: 300px;
+        }
+
+        .m1IMG {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .m2IMG {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .favorite-music {
+            margin-top: 70px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .favorite3 {
+            text-align: center;
+            margin: 30px 20px;
+            font-size: 50px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .music {
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+
+        .music-info {
+            text-align: center;
+        }
+
+        /* SCHEDULE */
+
+        .menu_schedule {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .schedule-bar>li {
+            width: 150px;
+            height: 30px;
+            background-color: rgb(51, 75, 38);
+            list-style: none;
+            line-height: 30px;
+        }
+
+
+        .schedule-bar>li>a {
+            color: white;
+            font-weight: 100;
+        }
+
+        .schedule-bar>li:first-child {
+            border-radius: 5px 0 0 5px;
+        }
+
+        .schedule-bar>li:first-child:hover {
+            background-color: rgb(0, 0, 0);
+        }
+
+        .schedule-bar>li:nth-child(2) {
+            background-color: rgb(159, 172, 124);
+        }
+
+        .schedule-bar>li:nth-child(2):hover {
+            background-color: rgb(0, 0, 0);
+        }
+
+        .schedule-bar>li:last-child {
+            border-radius: 0 5px 5px 0;
+        }
+
+        .schedule-bar>li:last-child:hover {
+            background-color: rgb(0, 0, 0);
+        }
+
+        .schedule-bar {
+            display: flex;
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 20px;
+            padding-left: 0;
+            justify-content: center;
+        }
+
+        .my-schedule {
+            font-weight: 600;
+            font-size: 17px;
+        }
+
+        .schedule1-1 {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .schedule1-2 {
+
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .schedule2-1 {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .schedule-container1 {
+            display: none;
+        }
+
+        .schedule-container1.active {
+            display: block;
+        }
+
+        .schedule-container2 {
+            display: none;
+        }
+
+        .schedule-container2.active {
+            display: block;
+        }
+
+        .schedule-container3 {
+            display: none;
+        }
+
+        .schedule-container3.active {
+            display: block;
+        }
+
+        table {
+            padding-left: 80px;
+            margin: auto;
+            justify-content: center;
+        }
+
+        th,
+        td {
+            width: 120px;
+            height: 40px;
+            border: 2px solid black;
+            text-align: center;
+        }
+
+        td {
+            height: 80px;
+        }
+
+        thead tr {
+            background-color: rgb(159, 172, 124);
+            color: black;
+        }
+
+        tbody {
+            top: 56px;
+        }
+
+        td:first-child {
+            font-weight: bold;
+        }
+
+        tr.row2-1>td {
+            height: 40px;
+        }
+
+        tr.row2-2>td {
+            height: 40px;
+        }
+
+        td.x {
+            visibility: hidden;
+        }
+
+        tr.row5-1>td {
+            height: 40px;
+        }
+
+        tr.row5-2>td {
+            height: 40px;
+        }
+
+        tr.row6-1>td {
+            height: 40px;
+        }
+
+        tr.row6-2>td {
+            height: 40px;
+        }
+
+        tr.row9-1>td {
+            height: 40px;
+        }
+
+        tr.row9-2>td {
+            height: 40px;
+        }
+
+        .time {
+            background-color: rgb(159, 172, 124);
+        }
+
+        .professor,
+        .classroom {
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+
+
+
+        @media screen and (max-width: 940px) {
+
+            .frame {
+                margin: 20px 60px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar-menu {
+                opacity: 0;
+                visibility: hidden;
+                width: 100%;
+                height: 0;
+                flex-direction: column;
+                align-items: center;
+                transform: translateY(-100%);
+            }
+
+            .navbar-menu.active {
+                opacity: 1;
+                visibility: visible;
+                background-color: rgb(240, 250, 215);
+                z-index: 100;
+                width: 100%;
+                height: initial;
+                flex-direction: column;
+                align-items: center;
+                transform: translateY(0);
+                transition: 0.5s;
+
+            }
+
+            .navbar-menu>li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .navbar-menu>li>a:hover {
+                color: black;
+                font-weight: 650;
+                font-size: 15px;
+                transition: 0.3s;
+            }
+
+            .navbar-menu>li:hover {
+                background-color: white;
+                border-radius: 4px;
+            }
+
+            .navbar-button {
+                display: block;
+                background-color: transparent;
+                border: transparent;
+                margin-right: 60px;
+
+            }
+
+            .main-comment {
+                margin: 100px 20px;
+                margin-top: 30px;
+            }
+
+            .comment1 {
+                font-size: 28px;
+                font-weight: 510;
+            }
+
+            .footer-title {
+                margin-top: 300px;
+            }
+
+            .movie {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .movie1 {
+                right: 0;
+            }
+
+            .movie2 {
+                left: 0;
+            }
+
+            .favorite-person {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .person1 {
+                margin-bottom: 90px;
+            }
+
+            .favorite-music {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .music1 {
+                margin-bottom: 90px;
+            }
+
+            .favorite1 {
+                margin-top: 70px;
+                text-align: center;
+                font-size: 50px;
+            }
+
+            .value-title {
+                text-align: center;
+                margin-bottom: 50px;
+            }
+
+            .menu_favorite>h2 {
+                margin: 50px 20px;
+                font-size: 50px;
+                text-align: center;
+                color: rgb(51, 75, 38);
+            }
+        }
+
+        @media screen and (max-width: 790px) {
+            .profile-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #profile-picture {
+                margin-bottom: 70px;
+            }
+
+            .mbti {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .c {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .graph {
+
+                margin-top: 20px;
+            }
+
+        }
+
+        @media screen and (max-width: 690px) {
+            .graph1 {
+                width: 350px;
+            }
+
+            .graph2 {
+                width: 350px;
+            }
+
+            .graph3 {
+                width: 220px;
+            }
+
+            .graph4 {
+                width: 350px;
+            }
+
+            .movie-img {
+                width: 500px;
+            }
+
+            .professor {
+                display: none;
+            }
+
+            table {
+                padding-left: 40px;
+                width: auto;
+                height: 100px;
+            }
+        }
+
+        @media screen and (max-width: 510px) {
+            .frame {
+                margin: 10px 10px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .navbar-button {
+                margin-right: 0px;
+            }
+
+            .main-comment {
+                margin: 100px 20px;
+                margin-top: 30px;
+            }
+
+            .comment1 {
+                font-size: 15px;
+                font-weight: 800;
+            }
+
+            .comment2 {
+                font-size: 12px;
+                font-weight: 300;
+                margin-right: 15px;
+            }
+
+            .footer-title {
+                margin-top: 200px;
+            }
+
+            .value {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+
+            }
+
+            #profile-picture {
+                margin: 30px 0px;
+            }
+
+            .personality {
+                margin-left: 0;
+            }
+
+            .movie-img {
+                width: 400px;
+            }
+
+            .graph1 {
+                width: 300px;
+            }
+
+            .graph2 {
+                width: 300px;
+            }
+
+            .graph3 {
+                width: 170px;
+            }
+
+            .graph4 {
+                width: 280px;
+            }
+
+            .professor {
+                display: none;
+            }
+
+            .classroom {
+                display: none;
+            }
+
+            table {
+                padding-left: 40px;
+                width: auto;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="frame">
+
+        <!--상단-->
+        <nav class="navbar">
+            <!--웹사이트 이름-->
+            <div class="navbar-logo">
+                <a class="site-name" href="">DA YEON YU</a>
+            </div>
+
+            <!--메뉴창-->
+            <ul class="navbar-menu">
+                <li><a href="#home" class="home-btn">HOME</a></li>
+                <li><a href="#about-me" class="aboutme-btn">ABOUT ME</a></li>
+                <li><a href="#favorite" class="favorite-btn">FAVORITE</a></li>
+                <li><a href="#schedule" class="schedule-btn">SCHEDULE</a></li>
+            </ul>
+
+            <!--사이즈 줄어들면 보이는 버튼-->
+            <button class="navbar-button">
+                <img class="bar" src="bar-icon.png">
+            </button>
+        </nav>
+
+        <!--HOME-->
+        <div class="menu_home active">
+            <!--메인 화면 (웹사이트 들어오면 제일 먼저 보이는 화면)-->
+            <div class="main-comment">
+                <h1 class="comment1">안녕하세요! 제 이름은 <a class="name">유다연</a><br>
+                    저의 <a class="highlight-type">웹사이트</a>에 오신 것을 정말로 <a class="highlight-type">환영합니다!</a>
+                </h1>
+
+                <p class="comment2">Hello, and welcome to my web page. I am majoring in computer engineering<br>
+                    at Kangwon National University. I am currently taking web programming and studying about the web.
+                    <br>
+                    I'm still learning, so I'd appreciate it if you liked it even though it's a very immature web page.
+                </p>
+            </div>
+        </div>
+
+
+        <!--ABOUT ME-->
+        <div class="menu_about-me">
+            <div class="profile-section">
+                <img id="profile-picture" src="profile.JPG">
+                <div class="introduction">
+                    <h2>ABOUT ME</h2>
+                    <p>
+                        <a class="info">AGE: 21 (2002.02.26) <br>
+                            RESIDENTIAL AREA: CHUNCHEON </a><br>
+                        <br><a class="point">강원대학교 컴퓨터공학과</a>재학 중, 현재 <a class="point">2학년 1학기</a> 과정 밟는 중입니다.<br> 1학년 때
+                        까지는 진로에 대해 깊게 생각해볼 기회가 없어
+                        내가 무엇을 하고 싶은지, 무엇을 잘 하는지도 모르는 상태였습니다. 과거에 비해 상대적으로 괜찮은 것 뿐, 현재도 크게 다를 바가 없지만
+                        요즘 <a class="point">게임 관련 분야</a>에 관심이 생기고 있어 더욱 노력이 필요하다는 것을 느끼고 있습니다. 이에 더불어 그래픽 분야도 관심이 생겨나고
+                        있어,
+                        <a class="point">그래픽 디자인</a> 쪽도 꼭 공부해보고 싶습니다.
+                    </p>
+                    <h2>HOBBY</h2>
+                    <p class="hobby">- WATCHING MOVIE<br>- PLAYING GAME<br>- DROWING PICTURE</p>
+                </div>
+            </div>
+
+
+            <h3 class="value-title">MY VALUE</h3>
+
+            <div class="value-section">
+
+                <!--장점이나 성격 같은 것-->
+                <div class="value">
+                    <img class="personality-picture" src="personality.png">
+                    <div class="personality">
+                        <h2>PERSONALITY</h2>
+                        <p class="personality-comment">저는 시작하면 끝장을 보는 스타일입니다. 남들 보다 게으른 편이라 시작은 늦지만, 끈기가 엄청나서
+                            한 번 무언가에 집중하면 해가 지는 지, 뜨는 지 모를 정도로 몰두합니다. 시간은 오래 걸려도 완벽하게 하는 것을 추구하고, 꼼꼼한 편이라
+                            빈틈이 생기는 것을 좋아 하지 않습니다. 또한, 정이 많고 사람들의 이야기를 듣는 것을 좋아합니다. 친구들의 사소한 이야기까지 듣고 반응해주는 것이
+                            무척 즐겁습니다.
+                        </p>
+                    </div>
+                </div>
+
+
+                <!--mbti-->
+                <div class="value">
+                    <div class="mbti">
+                        <h1>MBTI - <a>ISFP</a></h1>
+                        <div class="c">
+                            <div class="item item1">내향형 (76%)</div>
+                            <div class="graph graph1"></div>
+                        </div>
+
+                        <div class="c">
+                            <div class="item item2">현실형 (76%)</div>
+                            <div class="graph graph2"></div>
+                        </div>
+
+                        <div class="c">
+                            <div class="item item3">원칙형 (51%)</div>
+                            <div class="graph graph3"></div>
+                        </div>
+
+                        <div class="c">
+                            <div class="item item4">탐색형 (71%)</div>
+                            <div class="graph graph4"></div>
+                        </div>
+
+                        <h2 class="isfp-title">호기심 많은 예술가, 성인군자형</h2>
+                        <p class="isfp-tag">#독립적 #인간중심 #겸손함 #예술적 #세심함 #감정이입적이해 #융통성</p>
+                        <p class="isfp-comment">- 말 없이 다정하고 온화하며 사람들에게 친절하다. <br>- 상대를 잘 알게 될 때까지 내면의 모습이 잘 보이지 않는다.
+                            <br>- 의견 충돌을 피하고 인화를 중시한다. <br>- 인간과 관계되는 일을 할 때 자신의 감정과 타인의 감정에 지나치게 민감한 경향이 있다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--FAVORITE-->
+        <div class="menu_favorite">
+            <!--favorite movie-->
+            <h2>FAVORATE THINGS</h2>
+
+            <h3 class="favorite1">Favorite Movie</h3>
+            <div class="favorite-movie">
+                <div class="movie">
+                    <img class="movie-img" src="movie1.png">
+                    <div class="movie-info">
+                        <h3 class="movie-name movie1">어벤져스 엔드게임: AVENGERS ENDGAME</h3>
+                        <p class="movie-comment">인피니티 워 이후 절반만 살아남은 지구 마지막 희망이 된
+                            어벤져스 먼저 떠난 그들을 위해 모든 것을 걸었다! 위대한 어벤져스 운명을 바꿀 최후의
+                            전쟁이 펼쳐진다! </p>
+                        <a class="more" href="https://youtu.be/ijUsSpRVhBU">BEST SCENE</a>
+                    </div>
+                </div>
+
+                <div class="movie">
+                    <div class="movie-info">
+                        <h3 class="movie-name movie2">범죄도시2: the roundup</h3>
+                        <p class="movie-comment">괴물형사 ‘마석도’(마동석)와 ‘전일만’(최귀화) 반장은 베트남 현지의 용의자에게서 수상함을 느끼고,
+                            그의 뒤에 무자비한 악행을 벌이는 ‘강해상’(손석구)이 있음을 알게 된다. ‘마석도’와 금천서 강력반은 한국과 베트남을 오가며
+                            역대급 범죄를 저지르는 ‘강해상’을 본격적으로 쫓기 시작하는데... 나쁜 놈들 잡는 데 국경 없다!
+                            통쾌하고 화끈한 범죄 소탕 작전이 다시 펼쳐진다! </p>
+                        <a class="more" href="https://youtu.be/agAS6d2X_4I">PREVIEW</a>
+                    </div>
+                    <img class="movie-img" src="movie2.jpg">
+                </div>
+
+            </div>
+
+
+            <!--favorite person-->
+            <h3 class="favorite2">Favorite Person</h3>
+            <div class="favorite-person">
+                <div class="person person1">
+                    <img class="person-img" src="person1.jpg">
+                    <div class="person-info">
+                        <h3 class="person-name">KIM DO WAN<br></h3>
+                        <p class="person-comment">- 영화 배우, 탤런트<br>- 간 떨어지는 동거, 스타트업 출연<br><br><a class="tag"># 잘생김
+                                #연기잘함</a></p>
+                        <a class="more" href="https://www.instagram.com/kimdwan_/">INSTAGRAM</a>
+                    </div>
+                </div>
+
+                <div class="person person2">
+                    <img class="person-img" src="person2.jpg">
+                    <div class="person-info">
+                        <h3 class="person-name">Oking<br></h3>
+                        <p class="person-comment">- 유튜버, 스트리머<br>- 썰 방송, 게임 방송<br><br><a class="tag">#웃김 #귀여움</a> </p>
+                        <a class="more"
+                            href="https://www.youtube.com/channel/UCom6YhUY62jM52nIMjf5_dw/featured">YOUTUBE</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--favorite music-->
+            <h3 class="favorite3">Favorite Music</h3>
+            <div class="favorite-music">
+                <div class="music music1">
+                    <div class="m1IMG">
+                        <img class="music-img" src="music1.jpg">
+                        <img class="music-player" src="musicplayer.png">
+                    </div>
+                    <div class="music-info">
+                        <h3 class="music-name music1-name">Cold Feet</h3>
+                        <p class="music-comment"></p>
+                        <a class="more" href="https://www.youtube.com/watch?v=xmOc_hFzuHk">LISTEN</a>
+                    </div>
+                </div>
+
+                <div class="music music2">
+                    <div class="m2IMG">
+                        <img class="music-img" src="music2.jpg">
+                        <img class="music-player" src="musicplayer.png">
+                    </div>
+                    <div class="music-info">
+                        <h3 class="music-name music2-name">"HOMESWEETHOME"</h3>
+                        <p class="music-comment"></p>
+                        <a class="more" href="https://www.youtube.com/watch?v=7s1rQ79d6c0">LISTEN</a>
+                    </div>
+                </div>
+            </div>
+
+            <!--favorite game-->
+            <div class="favorite-game">
+
+            </div>
+
+        </div>
+
+        <!--SCHEDULE-->
+        <div class="menu_schedule">
+            <nav aria-label="...">
+                <ul class="schedule-bar">
+                    <li class="item1">
+                        <a class="s1-1" href="#schedule">1학년 1학기</a>
+                    </li>
+                    <li class="item2">
+                        <a class="s1-2" href="#schedule">1학년 2학기</a>
+                    </li>
+                    <li class="item3">
+                        <a class="s2-1" href="#schedule">2학년 1학기</a>
+                    </li>
+                </ul>
+            </nav>
+
+
+            <div class="schedule-container1">
+                <h2 class="schedule1-1">1학년 1학기 시간표</h2>
+                <div class="my-schedule">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>월</th>
+                                <th>화</th>
+                                <th>수</th>
+                                <th>목</th>
+                                <th>금</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time">9</td>
+                                <td></td>
+                                <td> </td>
+                                <td rowspan="2">의사소통영어<br><a class="professor">김영지 교수님</a><br><a class="classroom">60주년
+                                        503</a></td>
+                                <td></td>
+                                <td rowspan="12">공강</td>
+                            </tr>
+                            <tr>
+                                <td class="time">10</td>
+                                <td></td>
+                                <td></td>
+                                <td rowspan="2">파이썬<br>프로그래밍<br><a class="professor">김도형 교수님</a><br><a
+                                        class="classroom">한빛관 309</a></td>
+                            </tr>
+                            <tr>
+                                <td class="time">11</td>
+                                <td> </td>
+                                <td> </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="time">12</td>
+                                <td rowspan="2">글쓰기와<br>말하기<br><a class="professor">이연순 교수님</a><br><a
+                                        class="classroom">60주년 402</a></td>
+                                <td></td>
+                                <td></td>
+                                <td rowspan="2">글쓰기와<br>말하기<br><a class="professor">이연순 교수님</a><br><a
+                                        class="classroom">60주년 402</a></td>
+                            </tr>
+                            <tr class="row5-1">
+                                <td class="time" rowspan="2">1</td>
+                                <td rowspan="2"></td>
+                                <td rowspan="3">파이썬<br>프로그래밍<br><a class="professor">김도형 교수님</a><br><a
+                                        class="classroom">한빛관 411</a></td>
+                                <td class="x"></td>
+                            </tr>
+                            <tr class="row5-2">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr class>
+                                <td class="time">2</td>
+                                <td rowspan="2">미분적분학및<br>컴퓨터실습<br><a class="professor">김준기 교수님</a><br><a
+                                        class="classroom">60주년 703</a></td>
+                                <td></td>
+                                <td rowspan="2">미분적분학및<br>컴퓨터실습<br><a class="professor">김택철 교수님</a><br><a
+                                        class="classroom">공6 608</a></td>
+                            </tr>
+                            <tr>
+                                <td class="time">3</td>
+                                <td rowspan="2">프로그래밍<br>기초<br><a class="professor">정충교 교수님</a><br><a
+                                        class="classroom">공6 517</a></td>
+                                <td rowspan="2">프로그래밍<br>기초<br><a class="professor">정충교 교수님</a><br><a
+                                        class="classroom">공6 517</a></td>
+                            </tr>
+                            <tr>
+                                <td class="time">4</td>
+                                <td rowspan="2">컴퓨터개론<br><a class="professor">이구연 교수님</a><br><a class="classroom">공6
+                                        606</a></td>
+                                <td rowspan="2">컴퓨터개론<br><a class="professor">이구연 교수님</a><br><a class="classroom">공6
+                                        606</a></td>
+                            </tr>
+                            <tr class>
+                                <td class="time">5</td>
+                                <td></td>
+                                <td>진로탐색</td>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="schedule-container2">
+                <h2 class="schedule1-2">1학년 2학기 시간표</h2>
+                <div class="my-schedule">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>월</th>
+                                <th>화</th>
+                                <th>수</th>
+                                <th>목</th>
+                                <th>금</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time">9</td>
+                                <td rowspan="2">의사소통영어<br><a class="professor">애런 교수님</a><br><a class="classroom">60주년
+                                        315</a></td>
+                                <td> </td>
+                                <td></td>
+                                <td></td>
+                                <td rowspan="12">공강</td>
+                            </tr>
+                            <tr>
+                                <td class="time">10</td>
+                                <td rowspan="2">객체지향<br>프로그래밍<br><a class="professor">정충교 교수님</a><br><a
+                                        class="classroom">공6 517</a></td>
+                                <td rowspan="2">객체지향<br>프로그래밍<br><a class="professor">정충교 교수님</a><br><a
+                                        class="classroom">공6 517</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="time">11</td>
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <td class="time">12</td>
+                                <td rowspan="2">코딩의 논리<br><a class="professor">김택철 교수님</a><br><a class="classroom">미래관
+                                        301</a></td>
+                                <td></td>
+                                <td></td>
+                                <td rowspan="2">코딩의 논리<br><a class="professor">김택철 교수님</a><br><a class="classroom">미래관
+                                        301</a></td>
+                            </tr>
+                            <tr class="row5-1">
+                                <td class="time" rowspan="2">1</td>
+                                <td rowspan="2"></td>
+                                <td rowspan="2"></td>
+                                <td class="x"></td>
+                            </tr>
+                            <tr class="row5-2">
+                                <td rowspan="2">생활 프랑스어<br><a class="professor">이선희 교수님</a><br><a class="classroom">인1
+                                        105</a></td>
+                                <td rowspan="2">생활 프랑스어<br><a class="professor">이선희 교수님</a><br><a class="classroom">인1
+                                        105</a></td>
+                                <td class="x"></td>
+                            </tr>
+                            <tr>
+                                <td class="time">2</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="time">3</td>
+                                <td></td>
+                                <td rowspan="2">C프로그래밍<br><a class="professor">최미정 교수님</a><br><a class="classroom">공6
+                                        412</a>
+                                <td rowspan="2">C프로그래밍<br><a class="professor">최미정 교수님</a><br><a class="classroom">공6
+                                        309</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="time">4</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+            <div class="schedule-container3 active">
+                <h2 class="schedule2-1">2학년 1학기 시간표</h2>
+                <div class="my-schedule">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>월</th>
+                                <th>화</th>
+                                <th>수</th>
+                                <th>목</th>
+                                <th>금</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time">9</td>
+                                <td rowspan="2">이산수학<br><a class="professor">김만배 교수님</a><br><a class="classroom">공6
+                                        606</a></td>
+                                <td> </td>
+                                <td> </td>
+                                <td rowspan="2">이산수학<br><a class="professor">김만배 교수님</a><br><a class="classroom">공6
+                                        606</a></td>
+                                <td rowspan="12">공강</td>
+                            </tr>
+                            <tr class="row2-1">
+                                <td class="time" rowspan="2">10</td>
+                                <td rowspan="3">리눅스<br>프로그래밍<br><a class="professor">문양세 교수님</a><br><a
+                                        class="classroom">한빛관 412</a></td>
+                                <td rowspan="3">리눅스<br>프로그래밍<br><a class="professor">문양세 교수님</a><br><a
+                                        class="classroom">한빛관 309</a></td>
+                                <td class="x"></td>
+                            </tr>
+                            <tr class="row2-2">
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <td class="time">11</td>
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+                            <tr>
+                                <td class="time">12</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="time">1</td>
+                                <td rowspan="2">컴퓨터 활용<br><a class="professor">김동진 교수님</a><br><a class="classroom">미래관
+                                        405</a></td>
+                                <td></td>
+                                <td></td>
+                                <td rowspan="2">컴퓨터 활용<br><a class="professor">김동진 교수님</a><br><a class="classroom">미래관
+                                        405</a></td>
+                            </tr>
+                            <tr class="row6-1">
+                                <td class="time" rowspan="2">2</td>
+                                <td rowspan="3">자료구조<br><a class="professor">이창기 교수님</a><br><a class="classroom">한빛관
+                                        412</a></td>
+                                <td rowspan="3">자료구조<br><a class="professor">이창기 교수님</a><br><a class="classroom">한빛관
+                                        309</a></td>
+                                <td class="x"></td>
+                            </tr>
+                            <tr class="row6-2">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="time">3</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="time">4</td>
+                                <td rowspan="2">선형대수학<br><a class="professor">이구연 교수님</a><br><a class="classroom">공6
+                                        610</a></td>
+                                <td rowspan="3">웹프로그래밍<br><a class="professor">김아욱 교수님</a><br><a class="classroom">공6
+                                        609</a></td>
+                                <td rowspan="3">웹프로그래밍<br><a class="professor">김아욱 교수님</a><br><a class="classroom">공6
+                                        609</a></td>
+                                <td rowspan="2">선형대수학<br><a class="professor">이구연 교수님</a><br><a class="classroom">공6
+                                        610</a></td>
+                            </tr>
+                            <tr class="row9-1">
+                                <td class="time" rowspan="2">5</td>
+                                <td class="x"></td>
+                            <tr class="row9-2">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!--밑에 email, 인스타, 블로그 등 (contact)-->
+            <footer class="footer">
+                <h2 class="footer-title">CONTACT ME</h2>
+                <div class="contact-links">
+                    <a class="email" href="mailto:2y0206y2@kangwon.ac.kr" target="_blank">EMAIL</a>
+                    |
+                    <a class="instagram" href="https://instagram.com/udayxxn">INSTAGRAM</a>
+                    |
+                    <a class="blog" href="https://blog.naver.com/2y0206y">BLOG</a>
+                </div>
+            </footer>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="main.js"></script>
+
+</body>
+
+</html>
